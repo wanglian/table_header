@@ -6,7 +6,7 @@ This plugin must be used together with 'sortable_table' plugin.
 
 Install
 =======
-cript/plugin install git://github.com/wanglian/table_header.git
+script/plugin install git://github.com/wanglian/table_header.git
 
 In app/controllers/application_controller.rb:
 
@@ -48,10 +48,9 @@ Add some sugar for your views:
   <td><%= filter_table_header("name", :size => 10) %></td>
 
 
-Example
+Demo
 =======
-
-Example goes here.
+http://table-header.heroku.com
 
 
 Copyright (c) 2009 [Allen Wang], released under the MIT license
