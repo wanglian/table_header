@@ -1,0 +1,57 @@
+TableHeader
+===============
+
+Enhance HTML tables in rails app.
+This plugin must be used together with 'sortable_table' plugin.
+
+Install
+=======
+cript/plugin install git://github.com/wanglian/table_header.git
+
+In app/controllers/application_controller.rb:
+
+    class ApplicationController < ActionController::Base
+      include SortableTable::App::Controllers::ApplicationController
+      include TableHeader::App::Controllers::ApplicationController
+    end
+
+In app/helpers/application_helper.rb:
+
+    module ApplicationHelper
+      include SortableTable::App::Helpers::ApplicationHelper
+      include TableHeader::App::Helpers::ApplicationHelper
+    end
+
+
+Controller
+==========
+Use the selectable_attributes macro to list the... selectable attributes.
+Use the filter_attributes macro to list the... filter attributes.
+
+Then, in your index action, pass the conditions method.
+
+    class UsersController < Admin::BaseController
+      selectable_attributes :gender
+      filter_attributes :name, :email
+      
+      def index
+        @users = User.paginate :conditions => (filter_conditions + select_conditions).join(' AND '), 
+                               :page => params[:page], :order => sort_order
+      end
+    end
+
+View
+====
+Add some sugar for your views:
+  <%= sortable_table_header :name => "#{order_image('id')}ID", :sort => "id" %>
+  <%= selectable_table_header :name => "gender", :collection => ['Male', 'Female'] %>
+  <td><%= filter_table_header("name", :size => 10) %></td>
+
+
+Example
+=======
+
+Example goes here.
+
+
+Copyright (c) 2009 [Allen Wang], released under the MIT license
