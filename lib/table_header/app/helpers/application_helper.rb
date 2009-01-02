@@ -11,10 +11,10 @@ module TableHeader
         
         module InstanceMethods
           def selectable_table_header(opts = {})
-            raise ArgumentError if opts[:name].nil?
+            raise ArgumentError if opts[:select].nil?
             anchor = opts[:anchor].blank? ? "" : "##{opts[:anchor]}"
             content_tag :th, 
-              select_tag('', "<option value=""></option>#{options_for_select(opts[:collection], params[opts[:name]])}", :onchange => "window.location='#{selectable_url(opts[:name])}&#{opts[:name]}=' + this.value"),
+              select_tag('', "<option value="">All</option>#{options_for_select(opts[:collection], params[opts[:select]])}", :onchange => "window.location='#{selectable_url(opts[:select])}&#{opts[:select]}=' + this.value"),
               :class => class_name_for_sortable_table_header_tag(opts)
           end
 

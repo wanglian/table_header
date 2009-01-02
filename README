@@ -44,7 +44,7 @@ View
 ====
 Add some sugar for your views:
   <%= sortable_table_header :name => "#{order_image('id')}ID", :sort => "id" %>
-  <%= selectable_table_header :name => "gender", :collection => ['Male', 'Female'] %>
+  <%= selectable_table_header :select => "gender", :collection => ['Male', 'Female'] %>
   <td><%= filter_table_header("name", :size => 10) %></td>
 
 
